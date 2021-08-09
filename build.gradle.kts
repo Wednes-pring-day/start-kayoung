@@ -6,6 +6,7 @@ plugins {
 	kotlin("jvm") version "1.5.21"
 	kotlin("plugin.spring") version "1.5.21"
 	kotlin("plugin.jpa") version "1.5.21"
+	kotlin("plugin.allopen") version "1.5.21"
 }
 
 group = "com.spring.wednes"
@@ -26,6 +27,11 @@ dependencies {
 	implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
 	runtimeOnly("com.h2database:h2")
 	testImplementation("org.springframework.boot:spring-boot-starter-test")
+
+}
+
+allOpen {
+	annotation ("javax.persistence.Entity")
 }
 
 tasks.withType<KotlinCompile> {
