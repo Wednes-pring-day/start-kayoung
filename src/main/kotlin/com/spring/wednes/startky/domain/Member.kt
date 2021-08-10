@@ -5,6 +5,8 @@ import javax.persistence.*
 @Entity
 @Table(name="member")
 data class Member(
-        @Id @GeneratedValue(strategy = GenerationType.IDENTITY) var id: Long,
+        @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+        var id: Long? = null,
+        @Column(nullable = false)
         var name: String
         )

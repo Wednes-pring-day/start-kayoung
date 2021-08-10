@@ -28,17 +28,17 @@ class JdbcTemplateMemberRepository(dataSource: DataSource): MemberRepository {
 
     override fun findById(id: Long): Member? {
         val result = jdbcTemplate.query("select * from member where id=?", memberRowMapper(), id)
-        if (result.size == 0) return null
+        if (result.isEmpty()) return null
         return result[0]
     }
 
     override fun findByName(name: String): Member? {
         val result = jdbcTemplate.query("select * from member where name=?", memberRowMapper(), name)
-        if (result.size == 0) return null
+        if (result.isEmpty()) return null
         return result[0]
     }
 
-    fun memberRowMapper(): RowMapper<Member> = RowMapper<Member> {
+    private fun memberRowMapper(): RowMapper<Member> = RowMapper<Member> {
         rs: ResultSet, rowNum: Int -> Member(rs.getLong("id"), rs.getString("name"))
     }
 }
