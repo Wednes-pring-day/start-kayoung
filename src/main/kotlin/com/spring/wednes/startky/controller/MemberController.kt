@@ -22,7 +22,7 @@ class MemberController(private val memberService: MemberService) {
 
     @PostMapping("/members/new")
     fun create(form: MemberForm): String {
-        memberService.join(form.name)
+        memberService.join(Member(null, form.name))
         return "redirect:/"
     }
 

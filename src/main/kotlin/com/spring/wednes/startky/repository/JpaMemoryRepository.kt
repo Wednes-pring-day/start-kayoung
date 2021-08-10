@@ -9,8 +9,7 @@ open class JpaMemoryRepository(
     private val em: EntityManager
 ): MemberRepository {
 
-    override fun save(name: String): Member {
-        var member = Member(null, name)
+    override fun save(member: Member): Member {
         em.persist(member)
         return member
     }

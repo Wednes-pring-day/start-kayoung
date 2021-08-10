@@ -11,15 +11,15 @@ import javax.sql.DataSource
 class JdbcTemplateMemberRepository(dataSource: DataSource): MemberRepository {
     val jdbcTemplate = JdbcTemplate(dataSource)
 
-    override fun save(name: String): Member {
+    override fun save(member: Member): Member {
         val jdbcInsert = SimpleJdbcInsert(jdbcTemplate)
         jdbcInsert.withTableName("member").usingGeneratedKeyColumns("id")
 
         val parameters: HashMap<String, String> = HashMap()
-        parameters.put("name", name)
+        parameters.put("name", member.name)
 
         val key: Number = jdbcInsert.executeAndReturnKey(MapSqlParameterSource(parameters))
-        return Member(key.toLong(), name)
+        return Member(key.toLong(), member.name)
     }
 
     override fun findAll(): List<Member> {

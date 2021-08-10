@@ -8,9 +8,9 @@ class MemoryMemberRepository: MemberRepository {
     var store: HashMap<Long, Member> = HashMap()
     var sequence: Long = 0L
 
-    override fun save(name: String): Member {
+    override fun save(member: Member): Member {
         sequence += 1
-        val member = Member(sequence, name)
+        member.id = sequence
         store.put(sequence, member)
         return member
     }
