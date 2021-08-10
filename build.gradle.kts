@@ -1,5 +1,11 @@
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
+buildscript {
+	dependencies {
+		classpath ("org.jetbrains.kotlin:kotlin-noarg:1.5.21")
+	}
+}
+
 plugins {
 	id("org.springframework.boot") version "2.5.3"
 	id("io.spring.dependency-management") version "1.0.11.RELEASE"
@@ -32,6 +38,10 @@ dependencies {
 
 allOpen {
 	annotation ("javax.persistence.Entity")
+}
+
+noArg {
+	annotation("com.my.Annotation")
 }
 
 tasks.withType<KotlinCompile> {
