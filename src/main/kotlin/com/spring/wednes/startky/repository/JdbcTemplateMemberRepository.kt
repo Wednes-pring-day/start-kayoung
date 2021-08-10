@@ -8,7 +8,7 @@ import org.springframework.jdbc.core.simple.SimpleJdbcInsert
 import java.sql.ResultSet
 import javax.sql.DataSource
 
-class JdbcTemplateMemberRepository(dataSource: DataSource): MemberRepository {
+class JdbcTemplateMemberRepository(dataSource: DataSource) : MemberRepository {
     val jdbcTemplate = JdbcTemplate(dataSource)
 
     override fun save(member: Member): Member {
@@ -38,7 +38,7 @@ class JdbcTemplateMemberRepository(dataSource: DataSource): MemberRepository {
         return result[0]
     }
 
-    private fun memberRowMapper(): RowMapper<Member> = RowMapper<Member> {
-        rs: ResultSet, rowNum: Int -> Member(rs.getLong("id"), rs.getString("name"))
+    private fun memberRowMapper(): RowMapper<Member> = RowMapper<Member> { rs: ResultSet, rowNum: Int ->
+        Member(rs.getLong("id"), rs.getString("name"))
     }
 }

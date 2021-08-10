@@ -3,7 +3,7 @@ package com.spring.wednes.startky.repository
 import com.spring.wednes.startky.domain.Member
 
 
-class MemoryMemberRepository: MemberRepository {
+class MemoryMemberRepository : MemberRepository {
 
     var store: HashMap<Long, Member> = HashMap()
     var sequence: Long = 0L
@@ -21,7 +21,7 @@ class MemoryMemberRepository: MemberRepository {
 
     override fun findByName(name: String): Member? {
         val res = store.values
-                .filter { member: Member -> member.name.equals(name) }
+            .filter { member: Member -> member.name.equals(name) }
         if (res.isEmpty()) {
             return null
         }
