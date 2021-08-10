@@ -12,9 +12,7 @@ class MemberService(private val memberRepository: MemberRepository) {
         if (alreadyUser != null) {
             throw IllegalStateException("이미 존재하는 회원입니다.")
         }
-        val newMember = Member(null, name)
-        memberRepository.save(newMember)
-        return newMember
+        return memberRepository.save(name)
     }
 
     fun findMembers(): List<Member> {

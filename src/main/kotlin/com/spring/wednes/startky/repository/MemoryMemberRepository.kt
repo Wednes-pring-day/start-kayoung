@@ -1,18 +1,17 @@
 package com.spring.wednes.startky.repository
 
 import com.spring.wednes.startky.domain.Member
-import org.springframework.stereotype.Repository
 
-@Repository
+
 class MemoryMemberRepository: MemberRepository {
 
     var store: HashMap<Long, Member> = HashMap()
     var sequence: Long = 0L
 
-    override fun save(member: Member): Member {
+    override fun save(name: String): Member {
         sequence += 1
-        member.id = sequence
-        store.put(member.id!!, member)
+        val member = Member(sequence, name)
+        store.put(member.id, member)
         return member
     }
 
