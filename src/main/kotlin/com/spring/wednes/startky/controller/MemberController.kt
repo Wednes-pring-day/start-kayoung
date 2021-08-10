@@ -10,6 +10,11 @@ import org.springframework.web.bind.annotation.PostMapping
 @Controller
 class MemberController(private val memberService: MemberService) {
 
+    @GetMapping("/")
+    fun home(): String {
+        return "/home"
+    }
+
     @GetMapping("/members/new")
     fun createForm(): String {
         return "members/join-form"
