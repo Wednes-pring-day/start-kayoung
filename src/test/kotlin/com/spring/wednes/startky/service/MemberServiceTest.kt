@@ -29,7 +29,7 @@ internal class MemberServiceTest(
 
         // then
         val foundMember = memberService.findMemberByName(member.name)
-        Assertions.assertThat(foundMember.name).isEqualTo(member.name)
+        Assertions.assertThat(foundMember?.name).isEqualTo(member.name)
     }
 
     @Test
