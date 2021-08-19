@@ -24,18 +24,18 @@ class MemberServiceIntegrationTest(
         assertThat(member.name).isEqualTo(name)
     }
 
-    @Test
-    fun 중복된_이름은_예외를_던져야한다() {
-        // given
-        val name = "spring1"
-        memberService.join(Member(null, name))
-
-        // when & then
-        val e: IllegalStateException = assertThrows(IllegalStateException::class.java) {
+        @Test
+        fun `중복된 이름은 예외를 던져야한다`() {
+            // given
+            val name = "spring1"
             memberService.join(Member(null, name))
+
+            // when & then
+            val e: IllegalStateException = assertThrows(IllegalStateException::class.java) {
+                memberService.join(Member(null, name))
+            }
+            assertThat(e.message).isEqualTo("이미 존재하는 회원입니다.")
         }
-        assertThat(e.message).isEqualTo("이미 존재하는 회원입니다.")
-    }
 
     @Test
     fun findMembers() {

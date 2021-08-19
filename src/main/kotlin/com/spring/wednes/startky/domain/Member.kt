@@ -4,9 +4,11 @@ import javax.persistence.*
 
 @Entity
 @Table(name="member")
-data class Member(
-        @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-        var id: Long? = null,
+class Member(
         @Column(nullable = false)
         var name: String
-        )
+) {
+        @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+        var id: Long? = null
+}
+
