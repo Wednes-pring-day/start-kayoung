@@ -1,11 +1,10 @@
 package com.spring.wednes.startky.service
 
-import com.spring.wednes.startky.domain.Member
+import com.spring.wednes.startky.domain.member.Member
 import com.spring.wednes.startky.repository.MemberRepository
 import org.assertj.core.api.Assertions.*
 import org.junit.jupiter.api.Assertions.assertThrows
 import org.junit.jupiter.api.Test
-import org.junit.jupiter.api.assertThrows
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.context.SpringBootTest
 import java.lang.IllegalStateException

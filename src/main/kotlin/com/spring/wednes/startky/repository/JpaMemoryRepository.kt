@@ -1,6 +1,6 @@
 package com.spring.wednes.startky.repository
 
-import com.spring.wednes.startky.domain.Member
+import com.spring.wednes.startky.domain.member.Member
 import javax.persistence.EntityManager
 import javax.transaction.Transactional
 

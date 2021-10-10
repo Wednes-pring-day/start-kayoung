@@ -1,12 +1,10 @@
 package com.spring.wednes.startky.service
 
-import com.spring.wednes.startky.domain.Member
-import com.spring.wednes.startky.repository.MemberRepository
+import com.spring.wednes.startky.domain.member.Member
 import com.spring.wednes.startky.repository.MemoryMemberRepository
 import org.assertj.core.api.Assertions
 import org.junit.jupiter.api.Test
 
-import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.BeforeEach
 
 internal class MemberServiceTest(
