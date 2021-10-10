@@ -3,7 +3,7 @@ package com.spring.wednes.startky.service
 import com.spring.wednes.startky.domain.Member
 import com.spring.wednes.startky.repository.MemberRepository
 
-class MemberService(private val memberRepository: MemberRepository) {
+@Service
 
     fun join(member: Member): Member {
         val alreadyUser: Member? = memberRepository.findByName(member.name)
