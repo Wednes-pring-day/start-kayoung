@@ -9,10 +9,13 @@ buildscript {
 plugins {
 	id("org.springframework.boot") version "2.5.3"
 	id("io.spring.dependency-management") version "1.0.11.RELEASE"
-	kotlin("jvm") version "1.5.21"
-	kotlin("plugin.spring") version "1.5.21"
-	kotlin("plugin.jpa") version "1.5.21"
-	kotlin("plugin.allopen") version "1.5.21"
+
+	val kotlinVersion = "1.5.21"
+	kotlin("jvm") version kotlinVersion
+	kotlin("plugin.spring") version kotlinVersion
+	kotlin("plugin.jpa") version kotlinVersion
+	kotlin("plugin.allopen") version kotlinVersion
+	kotlin("kapt") version kotlinVersion
 }
 
 group = "com.spring.wednes"
@@ -34,6 +37,11 @@ dependencies {
 	runtimeOnly("com.h2database:h2")
 	testImplementation("org.springframework.boot:spring-boot-starter-test")
 
+	val mapstructVersion = "1.4.2.Final"
+	implementation("org.mapstruct:mapstruct:$mapstructVersion")
+	annotationProcessor("org.mapstruct:mapstruct-processor:$mapstructVersion")
+	kapt("org.mapstruct:mapstruct-processor:$mapstructVersion")
+	testImplementation("org.mapstruct:mapstruct-processor:$mapstructVersion")
 }
 
 allOpen {
