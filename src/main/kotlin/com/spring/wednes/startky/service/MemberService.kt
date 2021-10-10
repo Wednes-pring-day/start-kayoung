@@ -1,9 +1,13 @@
 package com.spring.wednes.startky.service
 
-import com.spring.wednes.startky.domain.Member
+import com.spring.wednes.startky.domain.member.Member
+import com.spring.wednes.startky.domain.member.MemberConverter
+import com.spring.wednes.startky.domain.member.MemberVo
 import com.spring.wednes.startky.repository.MemberRepository
+import org.springframework.stereotype.Service
 
-class MemberService(private val memberRepository: MemberRepository) {
+@Service
+class MemberService(private val memberRepository: MemberRepository, private val memberConverter: MemberConverter) {
 
     fun join(member: Member): Member {
         val alreadyUser: Member? = memberRepository.findByName(member.name)
@@ -23,5 +27,10 @@ class MemberService(private val memberRepository: MemberRepository) {
 
     fun findMemberByName(name: String): Member? {
         return memberRepository.findByName(name)
+    }
+
+    fun findMember(id: Long): MemberVo {
+        val member: Member = memberRepository.findById(id) ?: throw ClassNotFoundException()
+        return memberConverter.toMemberVo(member)
     }
 }
