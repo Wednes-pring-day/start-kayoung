@@ -48,10 +48,6 @@ allOpen {
 	annotation ("javax.persistence.Entity")
 }
 
-noArg {
-	annotation("com.my.Annotation")
-}
-
 tasks.withType<KotlinCompile> {
 	kotlinOptions {
 		freeCompilerArgs = listOf("-Xjsr305=strict")
